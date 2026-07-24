@@ -2,7 +2,7 @@
 
 > For anyone who's far too lazy (and far too traumatized) to re-live their pain subjects while filling out course evaluations (like me).
 
-[![Install with Tampermonkey](https://img.shields.io/badge/Tampermonkey-Install%20Script-black?style=for-the-badge&logo=tampermonkey&logoColor=red)](https://raw.githubusercontent.com/whooslizi/autofill-servey/eoleun/survey-autofill.user.js)
+[![Install with Tampermonkey](https://img.shields.io/badge/Tampermonkey-Install%20Script-black?style=for-the-badge&logo=tampermonkey&logoColor=red)](https://raw.githubusercontent.com/whooslizi/autofill-survey/eoleun/survey-autofill.user.js)
 
 ---
 
