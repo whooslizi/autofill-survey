@@ -7,7 +7,7 @@
 // @match        https://ctt-daotao.hust.edu.vn/*
 // @match        https://*.hust.edu.vn/*
 // @grant        none
-// ==UserScript==
+// ==/UserScript==
 
 (function () {
   'use strict';
@@ -31,8 +31,12 @@
     transition: transform 0.2s, background-color 0.2s;
   `;
 
-  button.onmouseover = () => button.style.backgroundColor = '#a0182e';
-  button.onmouseout = () => button.style.backgroundColor = '#c41e3a';
+  button.onmouseover = () => {
+    button.style.backgroundColor = '#a0182e';
+  };
+  button.onmouseout = () => {
+    button.style.backgroundColor = '#c41e3a';
+  };
 
   button.onclick = function () {
     const level = prompt(
