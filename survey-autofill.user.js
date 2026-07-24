@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         HUST Survey Auto-Fill Tool
 // @namespace    https://github.com/whooslizi
-// @version      1.0.0
+// @version      1.0.2
 // @description  Tu dong dien khao sat danh gia hoc phan HUST
 // @author       whooslizi
 // @match        https://ctt-daotao.hust.edu.vn/*
+// @match        https://ctt-sis.hust.edu.vn/*
 // @match        https://*.hust.edu.vn/*
 // @grant        none
 // ==/UserScript==
@@ -53,24 +54,48 @@
     const idx = parseInt(level, 10);
 
     if (isNaN(idx) || idx < 0 || idx > 4) {
-      alert("Nhập từ 0 đến 4");
+      alert("Nhập từ 0 đến 4!");
       return;
     }
 
     let count = 0;
-    const rows = document.querySelectorAll('tr, table, div');
 
-    rows.forEach(row => {
-      const radios = row.querySelectorAll('input[type="radio"]');
-      if (radios.length === 5) {
-        if (radios[idx] && !radios[idx].checked) {
-          radios[idx].click();
+    const radios = document.querySelectorAll('input[type="radio"]');
+    if (radios.length > 0) {
+      const radioGroups = {};
+      radios.forEach(radio => {
+        const name = radio.name || radio.getAttribute('name');
+        if (name) {
+          if (!radioGroups[name]) radioGroups[name] = [];
+          radioGroups[name].push(radio);
+        }
+      });
+
+      Object.values(radioGroups).forEach(group => {
+        if (group.length === 5 && group[idx]) {
+          group[idx].click();
           count++;
         }
-      }
-    });
+      });
+    }
 
-    alert(`Đã xong lựa chọn[${idx}]!`);
+    if (count === 0) {
+      const prefixes = [`${idx}:`, `${idx}.`];
+      const elements = document.querySelectorAll('label, td, span, div');
+
+      elements.forEach(el => {
+        const text = el.innerText ? el.innerText.trim() : '';
+        const matchesPrefix = prefixes.some(p => text.startsWith(p));
+
+        if (matchesPrefix) {
+          const input = el.querySelector('input[type="radio"]') || el;
+          input.click();
+          count++;
+        }
+      });
+    }
+
+    alert(`Đã chọn mức [${idx}] cho ${count} lựa chọn!`);
   };
 
   document.body.appendChild(button);
