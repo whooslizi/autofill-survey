@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         HUST Survey Auto-Fill Tool
-// @namespace    https://github.com/
+// @namespace    https://github.com/whooslizi
 // @version      1.0.0
 // @description  Tu dong dien khao sat danh gia hoc phan HUST
-// @author       @whooslizi
+// @author       whooslizi
 // @match        https://ctt-daotao.hust.edu.vn/*
 // @match        https://*.hust.edu.vn/*
 // @grant        none
@@ -13,7 +13,7 @@
   'use strict';
 
   const button = document.createElement('button');
-  button.innerText = 'Autofill Survey(s)';
+  button.innerText = 'Survey Autofill';
   button.style.cssText = `
     position: fixed;
     bottom: 20px;
@@ -66,7 +66,7 @@
       }
     });
 
-    alert(`Đã xong lựa chọn [${idx}]!`);
+    alert(`Đã xong lựa chọn[${idx}]!`);
   };
 
   document.body.appendChild(button);
